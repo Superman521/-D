@@ -40,41 +40,41 @@
 
 </body>
 <script>
-    // // 登录功能
-    // $(function() {
+    // 登录功能
+    $(function() {
 
-    //     $(".input_sub").click(function(e) {
+        $(".input_sub").click(function(e) {
 
-    //         e.preventDefault()
-    //         var username = $(".input_txt").val().trim();
-    //         // 密码
-    //         var password = $(".input_pass").val().trim();
-    //         // 非空判断
-    //         if (username === '' || password === '') {
-    //             alert("不能为空");
-    //             return;
-    //         }
-    //         // 不能为空
-    //         $.ajax({
-    //             url: "http://localhost:8080/api/v1/admin/user/login",
-    //             type: "POST",
-    //             data: {
-    //                 username: username,
-    //                 password: password
-    //             },
-    //             success: function(backData) {
-    //                 // console.log(backData);
-    //                 if (backData.code === 400) {
-    //                     // 错误
-    //                     alert(backData.msg);
-    //                 } else if (backData.code === 200) {
-    //                     // 去index
-    //                     window.location.href = './index.html';
-    //                 }
-    //             }
-    //         })
-    //     })
-    // })
+            e.preventDefault()
+            var username = $(".input_txt").val().trim();
+            // 密码
+            var password = $(".input_pass").val().trim();
+            // 非空判断
+            if (username === '' || password === '') {
+                alert("不能为空");
+                return;
+            }
+            // 不能为空
+            $.ajax({
+                url: "http://localhost:8080/api/v1/admin/user/login",
+                type: "POST",
+                data: {
+                    username: username,
+                    password: password
+                },
+                success: function(backData) {
+                    // console.log(backData);
+                    if (backData.code === 400) {
+                        // 错误
+                        alert(backData.msg);
+                    } else if (backData.code === 200) {
+                        // 去index
+                        window.location.href = './index.html';
+                    }
+                }
+            })
+        })
+    })
 </script>
 
 
