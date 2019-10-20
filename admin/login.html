@@ -69,6 +69,7 @@
                         alert(backData.msg);
                     } else if (backData.code === 200) {
                         // 去index
+                        window.localStorage.setItem('token', backData.token);
                         window.location.href = './index.html';
                     }
                 }
