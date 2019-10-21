@@ -59,7 +59,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
+                            aria-hidden="true">&times;</span></button>
                     <!-- 标题 -->
                     <h4 class="modal-title" id="myModalLabel">新增分类</h4>
                 </div>
@@ -92,7 +92,7 @@
             <td>{{$value.slug}}</td>
             <td class="text-center ">
                 <a href="javascript:void(0); " data-toggle="modal " class=" btn btn-info btn-xs ">编辑</a>
-                <a href="javascript:void(0); " class="btn btn-danger btn-xs ">删除</a>
+                <a href="javascript:void(0) " data-id="{{$value.id}}" class="btn btn-delete btn-danger btn-xs ">删除</a>
             </td>
         </tr>
         {{/each}}
@@ -142,7 +142,27 @@
                 })
             })
 
-
+            // 点击删除
+            // tr是动态创建的  需要用到事件委托
+            // $(".btn-delete").click(function() {
+            $("tbody").on("click", ".btn-delete", function() {
+                // 获取ID
+                var id = $(this).attr("data-id")
+                $.ajax({
+                    url: BigNew.category_delete,
+                    type: "POST",
+                    data: {
+                        id: id
+                    },
+                    success: function(backData) {
+                        console.log(backData);
+                        // 如果删除成功  重新获取数据
+                        if (backData.code == 204) {
+                            getCategoryData();
+                        }
+                    }
+                })
+            })
         })
     </script>
 
