@@ -56,8 +56,7 @@
                 <div class="form-group">
                     <label for="inputEmail4" class="col-sm-2 control-label">密码：</label>
                     <div class="col-sm-4">
-                        <input type="password" name="password" class="form-control password" id="inputEmail4"
-                            value="12345678">
+                        <input type="password" name="password" class="form-control password" id="inputEmail4" value="12345678">
                     </div>
                 </div>
                 <div class="form-group">
@@ -68,6 +67,43 @@
             </form>
         </div>
     </div>
+
+    <script>
+        // 用户详情
+
+        $(function() {
+            $.ajax({
+                url: BigNew.user_detail,
+                success: function(backData) {
+                    console.log(backData);
+                    // 挨个设置
+                    // $(".username").val(backData.data.username);
+                    // $(".nickname").val(backData.data.nickname);
+                    // $(".email").val(backData.data.email);
+                    // $(".password").val(backData.data.password);
+                    // 标签元素的 标记和 数据有相同部分 
+                    // key 对象的键
+                    for (const key in backData.data) {
+                        // 对象可以 点语法 也可以中括号
+                        $("." + key).val(backData.data[key]);
+                    }
+
+
+
+                    // 单独设置图片
+                    $(".user_pic").attr("src", backData.data.userPic);
+                }
+
+
+
+
+            })
+
+
+
+
+        })
+    </script>
 </body>
 
 </html>
